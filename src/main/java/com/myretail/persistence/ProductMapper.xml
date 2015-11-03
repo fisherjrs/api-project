@@ -1,0 +1,80 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myretail.persistence.ProductMapper">
+	<cache />
+
+	<resultMap type="com.myretail.model.Product" id="productResultMap">
+		<result property="creationDate" column="creation_date"
+			javaType="java.time.LocalDateTime" typeHandler="com.myretail.utils.DateTimeHandler"></result>
+		<result property="lastUpdated" column="last_updated" javaType="java.time.LocalDateTime"
+			typeHandler="com.myretail.utils.DateTimeHandler"></result>
+	</resultMap>
+	
+	<select id="getProducts" resultType="Product" parameterType="map" resultMap="productResultMap">
+		select p.*, pr.price 
+		from myretail.products p LEFT OUTER JOIN myretail.prices pr
+		ON p.id = pr.id
+		where p.id = pr.id
+		order by category asc
+	</select>
+
+	<select id="getProduct" resultType="Product" resultMap="productResultMap">
+		SELECT p.*, pr.price 
+		from myretail.products p LEFT OUTER JOIN myretail.prices pr
+		ON p.id = pr.id
+		where p.id = #{id}
+		order by p.id
+	</select>
+	
+	<select id="getProductsByCategory" resultType="Product" resultMap="productResultMap">
+		SELECT p.*, pr.price from
+		myretail.products p LEFT OUTER JOIN myretail.prices pr
+		ON p.id = pr.id
+		where lcase(p.category) in 	<foreach item="item" index="index" collection="collection"
+	        open="(" separator="," close=")">
+	          #{item}
+	    </foreach>
+		;
+	</select>
+
+	<insert id="insertProduct" parameterType="Product">
+		insert into myretail.products(id, sku, name, category, creation_date,
+		last_updated)
+		values(#{id}, #{sku}, #{name}, #{category}, now(),
+		now());
+	</insert>
+	
+	<insert id="insertPrice" parameterType="Product">
+		insert into myretail.prices(id, price, creation_date, last_updated)
+		values(#{id}, #{price}, now(), now());
+	</insert>
+	
+	<update id="updateProduct" parameterType="Product">
+		update myretail.products p
+		set p.sku = #{sku},
+		p.name = #{name},
+		p.category = #{category},
+		p.last_updated = now()
+		where p.id = #{id}
+	</update>
+	
+	<update id="updatePrice" parameterType="Product">
+		update myretail.prices pr
+		set pr.price = #{price},
+		pr.last_updated = now()
+		where pr.id = #{id}
+	</update>
+	
+	<delete id="deleteProduct" parameterType="Product">
+		delete from myretail.products
+		where id = #{id}
+	</delete>
+	
+	<delete id="deletePrice" parameterType="Product">
+		delete from myretail.prices
+		where id = #{id}
+	</delete>
+	
+	<select id="getProductCategories" resultType="Category">
+		select distinct(category) as name from myretail.products
+	</select>
+</mapper>
