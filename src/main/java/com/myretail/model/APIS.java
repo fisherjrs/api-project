@@ -16,7 +16,7 @@ public enum APIS  {
 	getproduct1("getproduct", "myretail/v1/getproduct", "?productId=xx", "http://localhost:8080/myretail/v1/getproduct?productId=5555"),
 	getallproducts("getallproducts", "myretail/v1/getallproducts", "none", "http://localhost:8080/myretail/v1/getallproducts"),
 	getproducts0("getproducts", "myretail/v1/getproducts/{category}", "none", "http://localhost:8080/myretail/v1/getproducts/toys"),
-	getproducts1("getproducts", "myretail/v1/getproducts", "?categories=xx,yy", "http://localhost:8080/myretail/v1/getproducts/?categories=toys"),
+	getproducts1("getproducts", "myretail/v1/getproducts", "?categories=xx,yy", "http://localhost:8080/myretail/v1/getproducts?categories=toys"),
 	getcategories("getcategories", "myretail/v1/getcategories", "none", "http://localhost:8080/myretail/v1/getcategories"),
 	validate("validatetokens", "myretail/v1/validate", "?requestKey=xx", "http://localhost:8080/myretail/v1/validate?requestKey=summer"),
 	errorPersistence("errorPersistence", "/myretail/v1/test/exception/persistence", "?token=winter", "http:/localhost:8080/myretail/v1/test/exception/persistence?token=winter"),
