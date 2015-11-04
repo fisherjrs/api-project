@@ -6,7 +6,7 @@ import com.myretail.model.Product;
 import com.myretail.model.Category;
 
 /**
- * Interface for the Ibatis mappings.
+ * Interface for the Mybatis mappings.
  * @author fishej2
  *
  */

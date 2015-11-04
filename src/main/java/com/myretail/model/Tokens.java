@@ -2,6 +2,12 @@ package com.myretail.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+/**
+ * Represents the token used for a modicum of security.
+ * @author fishej2
+ *
+ */
+
 public class Tokens {
 
 	

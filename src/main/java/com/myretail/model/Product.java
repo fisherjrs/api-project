@@ -5,6 +5,11 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+/**
+ * The product model. 
+ * @author fishej2
+ *
+ */
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = -7298686884054779108L;

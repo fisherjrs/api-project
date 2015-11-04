@@ -23,6 +23,12 @@ import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import com.myretail.service.ProductService;
 import com.myretail.service.ValidationService;
 
+/**
+ * Java-based config for the app. 
+ * @author fishej2
+ *
+ */
+
 @MapperScan("com.myretail.persistence")
 public class MyRetailConfig extends AbstractConfiguration {
 

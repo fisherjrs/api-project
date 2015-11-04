@@ -1,5 +1,11 @@
 package com.myretail.model;
 
+/**
+ * The Jackson view mapper.
+ * 
+ * @author fishej2
+ *
+ */
 public class View {
 
 	static class Public {};

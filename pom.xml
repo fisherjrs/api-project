@@ -6,7 +6,7 @@
 	<groupId>com.myretail</groupId>
 	<artifactId>poc</artifactId>
 	<version>0.1.0</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>myRetail POC</name>
 	<description>Project POC products service and API</description>
